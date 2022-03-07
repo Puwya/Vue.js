@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Directives</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <div id="app">
+        <button @click="num = num + 1">{{ num }}</button>
+        <div v-if="num === 9">Num is now 9</div>
+        <div v-else-if="num != 9">Num is not 9</div>
+        <div>
+            <input v-model="name" /><br>
+            {{ name }}
+        </div>
+    </div>
+    
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            num: 0
+          }
+        }
+      }).mount('#app')
+    </script>
+</body>
+</html>
