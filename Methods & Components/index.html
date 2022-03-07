@@ -1,0 +1,48 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Methods</title>
+</head>
+
+<body>
+	<div id='app'>
+		<login-form />
+	</div>
+	<script src="https://unpkg.com/vue@3"></script>
+	<script>
+		let app = Vue.createApp({
+			data() {
+				return {
+					v: 1
+				}
+			}
+		})
+		app.component('login-form', {
+			template: `
+				<h1>Login</h1>
+				<form @submit.prevent="handleSubmit">
+					<input type="email" v-model="userEmail"/>
+					<br>
+					<input type="password" v-model="userPassword"/>
+					<br>
+					<button>Login</button>
+				</form>
+			`,
+			data() {
+				return {
+					userEmail: "",
+					userPassword: ""
+				}
+			},
+			methods: {
+				handleSubmit() {
+					console.log(this.userEmail, this.userPassword);
+				}
+			}
+		})
+		app.mount('#app')
+	</script>
+</body>
+
+</html>
