@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Doc</title>
+</head>
+<body>
+   <div id="app">
+      <form @submit.prevent="readArray(num)">
+            <input type="number" v-model="num">
+            <button type="submit">Submit</button>
+      </form>
+      <p>
+         Array
+         {{array}}
+      </p>
+      <button @click="bubbleSort">Bubble Sort</button>
+   </div>
+   <script src="https://unpkg.com/vue@3"></script>
+   <script>
+      Vue.createApp({
+         data() {
+            return {
+               num: Number,
+               array: []
+            }
+         },
+         methods: {
+            readArray(num) {
+               this.array.push(num) 
+            },
+            bubbleSort() {
+               for (let i = 0; i < this.array.length - 1; i++) {
+                  for (let j = 0; j < this.array.length - 1 - i; j++) {
+
+                     if (this.array[j] > this.array[j + 1]) {
+                        let temp = this.array[j + 1];
+                        this.array[j + 1] = this.array[j];
+                        this.array[j] = temp;
+                     }
+                  }
+               }
+            }
+         }
+      }).mount('#app')
+   </script>
+</body>
+</html>

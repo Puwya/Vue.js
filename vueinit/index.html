@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Document</title>
+      <style>
+         input {
+            margin-bottom: 5px;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="app">
+         <login-form />
+      </div>
+      <script src="https://unpkg.com/vue@3"></script>
+      <script>
+         let app = Vue.createApp({
+            data() {
+               return {
+               }
+            }
+         })
+         app.component("login-form", {
+            template: `
+               <form @submit.prevent="handleSubmit">
+                  <h1>{{ title }}</h1>
+                  <custom-input :label="emailLabel" /><br>
+                  <custom-input :label="passwordLabel" /><br>
+                  <button type="submit">Submit</button>
+               </form>
+            `,
+            component: ["custom-input"],
+            data() {
+               return {
+                  title: "Login Form",
+                  email: "",
+                  password: "",
+                  emailLabel: "Email",
+                  passwordLabel: "Password"
+               }
+            },
+            methods: {
+               handleSubmit() {
+                  console.log(this.email, this.password)
+               }
+            }
+         })
+         app.component("custom-input", {
+            template: `
+               <label>
+                  {{ label }} <br>
+                  <input v-model="inputValue" />
+               </label>
+            `,
+            props: ["label"],
+            data() {
+               return {
+                  inputValue: ""
+               }
+            }
+
+         })
+         app.mount("#app")
+      </script>
+   </body>
+</html>
