@@ -35,7 +35,7 @@ export default {
       this.taskView = !this.taskView;
     },
     async addTask(task) {
-      const res = await fetch('api/tasks', {
+      const res = await fetch('https://task-tracker-los.herokuapp.com/tasks', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -48,7 +48,7 @@ export default {
     },
     async deleteTask(id) {
       if (confirm("Are you sure you want to delete task!")) {
-        const res = await fetch(`api/tasks/${id}`, { method: 'DELETE' });
+        const res = await fetch(`https://task-tracker-los.herokuapp.com/tasks/${id}`, { method: 'DELETE' });
 
         if (res.status === 200) {
           this.tasks = this.tasks.filter((task) => task.id !== id);
@@ -61,7 +61,7 @@ export default {
       const task = await this.fetchTask(id);
       task.reminder = !task.reminder;
 
-      const res = await fetch(`api/tasks/${id}`, {
+      const res = await fetch(`https://task-tracker-los.herokuapp.com/tasks/${id}`, {
         method: 'PUT',
         headers: {
           'Content-type': 'application/json',
@@ -78,12 +78,12 @@ export default {
       });
     },
     async fetchTasks() {
-      const res = await fetch('api/tasks');
+      const res = await fetch('https://task-tracker-los.herokuapp.com/tasks');
       const data = await res.json();
       return data;
     },
     async fetchTask(id) {
-      const res = await fetch(`api/tasks/${id}`);
+      const res = await fetch(`https://task-tracker-los.herokuapp.com/tasks/${id}`);
       const data = await res.json();
       return data;
     },
