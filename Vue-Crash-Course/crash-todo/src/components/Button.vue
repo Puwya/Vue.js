@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     handleClick() {
-      this.$emit('toggle-task-view');
+      this.$emit('btn-click');
     }
   }
 }

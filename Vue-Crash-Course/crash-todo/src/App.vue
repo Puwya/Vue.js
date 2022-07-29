@@ -1,8 +1,11 @@
 <template>
   <div class="container">
     <Header title="Task Tracker" ></Header>
-    <Button @toggle-task-view="toggleTaskView" color="grey" text="Toggle Task View"></Button>
-    <div v-if="toggleAddTask">
+    <Button 
+      @btn-click="toggleTaskView" :color="taskView ? 'grey' : 'green'" 
+      :text="taskView ? 'Close Task View' : 'Task View'"
+    ></Button>
+    <div v-if="taskView">
       <AddTask @add-task="addTask" />
     </div>
     <Tasks 
@@ -29,12 +32,13 @@ export default {
   data() {
     return {
       tasks: [],
-      toggleAddTask: true,
+      taskView: false,
+      color: 'green',
     }
   },
   methods: {
     toggleTaskView() {
-      this.toggleAddTask = !this.toggleAddTask;
+      this.taskView = !this.taskView;
     },
     addTask(task) {
       this.tasks = [...this.tasks, task];
