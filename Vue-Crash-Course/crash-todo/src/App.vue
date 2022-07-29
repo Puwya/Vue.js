@@ -55,29 +55,15 @@ export default {
         }
         return task;
       });
-    }
+    },
+    async fetchTasks() {
+      const res = await fetch('http://localhost:3000/tasks');
+      const data = await res.json();
+      return data;
+    },
   },
-  created() {
-    this.tasks = [
-      {
-        id: 1,
-        text: 'Doctors Appointment',
-        day: 'March 1st at 2:30pm',
-        reminder: true,
-      },
-      {
-        id: 2,
-        text: 'Meeting at school',
-        day: 'March 3rd at 1:30pm',
-        reminder: true,
-      },
-      {
-        id: 3,
-        text: 'Food Shopping',
-        day: 'March 4th at 11:00am',
-        reminder: false,
-      }
-    ];
+  async created() {
+    this.tasks = await this.fetchTasks();
   }
 }
 </script>
