@@ -1,7 +1,6 @@
 <template>
-  <header>
+  <header style="justify-content: center">
     <h1>{{ title }}</h1>
-    <Button text="Add Task" color="navy" ></Button>
   </header>
 </template>
 

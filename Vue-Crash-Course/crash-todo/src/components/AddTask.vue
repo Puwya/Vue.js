@@ -8,9 +8,9 @@
       <label>Day & Time</label>
       <input type="text" v-model="day" name="day" placeholder="Add Day & Time"/>
     </div>
-    <div class="form-control">
+    <div class="box">
       <label>Set Reminder</label>
-      <input type="checkbox" v-model="reminder" name="reminder" />
+      <input class="check" type="checkbox" v-model="reminder" name="reminder" />
     </div>
     <input type="submit" value="Save Task" class="btn btn-block">
   </form>
@@ -61,11 +61,12 @@ export default {
 }
 .form-control label {
   display: block;
+  margin-left: 4px;
 }
 .form-control input {
   width: 100%;
   height: 40px;
-  margin: 5px;
+  margin: 3px;
   padding: 3px 7px;
   font-size: 17px;
 }
@@ -80,5 +81,11 @@ export default {
 .form-control-check input {
   flex: 2;
   height: 20px;
+}
+.box {
+  margin-left: 4px;
+}
+.check {
+  margin-left: 10px;
 }
 </style>
