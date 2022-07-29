@@ -63,10 +63,22 @@ export default {
         }
       }
     },
-    toggleReminder(id) {
+    async toggleReminder(id) {
+      const task = await this.fetchTask(id);
+      task.reminder = !task.reminder;
+
+      const res = await fetch(`api/tasks/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(task),
+      });
+      const data = await res.json();
+
       this.tasks = this.tasks.map((task) => {
         if (task.id === id) {
-           task.reminder = !task.reminder;
+           task.reminder = data.reminder;
         }
         return task;
       });
