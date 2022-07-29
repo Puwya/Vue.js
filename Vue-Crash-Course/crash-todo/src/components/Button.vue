@@ -1,5 +1,7 @@
 <template>
-  <button @click="onClick()" :style="{ background: color }" class="btn"> {{ text }} </button>
+  <div align="center">
+    <button @click="handleClick" class="btn-v" :style="{ background: color }"> {{ text }} </button>
+  </div>
 </template>
 
 <script>
@@ -10,9 +12,24 @@ export default {
     color: String,
   },
   methods: {
-    onClick() {
-      console.log('Click');
+    handleClick() {
+      this.$emit('toggle-task-view');
     }
   }
 }
 </script>
+
+<style scoped>
+.btn-v {
+  display: inline-block;
+  color: #fff;
+  border: none;
+  padding: 7px 15px;
+  margin: 7px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
+}
+</style>

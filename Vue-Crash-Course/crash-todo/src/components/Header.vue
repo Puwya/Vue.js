@@ -5,16 +5,11 @@
 </template>
 
 <script>
-import Button from './Button'
-
 export default {
   name: 'Header',
   props: {
     title: String  
   },
-  components: {
-    Button,
-  }
 }
 </script>
 
@@ -23,6 +18,6 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 </style>

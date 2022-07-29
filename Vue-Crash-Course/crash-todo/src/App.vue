@@ -1,7 +1,10 @@
 <template>
   <div class="container">
     <Header title="Task Tracker" ></Header>
-    <AddTask @add-task="addTask" />
+    <Button @toggle-task-view="toggleTaskView" color="grey" text="Toggle Task View"></Button>
+    <div v-if="toggleAddTask">
+      <AddTask @add-task="addTask" />
+    </div>
     <Tasks 
       @toggle-reminder="toggleReminder" 
       @delete-task="deleteTask" :tasks="tasks"
@@ -13,6 +16,7 @@
 import Header from './components/Header.vue'
 import Tasks from './components/Tasks.vue'
 import AddTask from './components/AddTask.vue'
+import Button from './components/Button.vue'
 
 export default {
   name: 'App',
@@ -20,13 +24,18 @@ export default {
     Header,
     Tasks,
     AddTask,
+    Button,
   },
   data() {
     return {
       tasks: [],
+      toggleAddTask: true,
     }
   },
   methods: {
+    toggleTaskView() {
+      this.toggleAddTask = !this.toggleAddTask;
+    },
     addTask(task) {
       this.tasks = [...this.tasks, task];
     },

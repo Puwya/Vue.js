@@ -57,7 +57,7 @@ export default {
   margin-bottom: 40px;
 }
 .form-control {
-  margin: 20px 0;
+  margin: 10px 0;
 }
 .form-control label {
   display: block;
@@ -83,7 +83,7 @@ export default {
   height: 20px;
 }
 .box {
-  margin-left: 4px;
+  margin-left: 5px;
 }
 .check {
   margin-left: 10px;
