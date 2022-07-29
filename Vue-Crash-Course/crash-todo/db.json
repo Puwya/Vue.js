@@ -11,6 +11,12 @@
       "day": "rgdaf",
       "reminder": true,
       "id": 3
+    },
+    {
+      "text": "Test",
+      "day": "Testtttt",
+      "reminder": true,
+      "id": 4
     }
   ]
 }
