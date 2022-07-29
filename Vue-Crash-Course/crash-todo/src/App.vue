@@ -40,12 +40,27 @@ export default {
     toggleTaskView() {
       this.taskView = !this.taskView;
     },
-    addTask(task) {
-      this.tasks = [...this.tasks, task];
+    async addTask(task) {
+      const res = await fetch('api/tasks', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(task),
+      });
+
+      const data = await res.json();
+      this.tasks = [...this.tasks, data];
     },
-    deleteTask(id) {
+    async deleteTask(id) {
       if (confirm("Are you sure you want to delete task!")) {
-        this.tasks = this.tasks.filter((task) => task.id !== id);
+        const res = await fetch(`api/tasks/${id}`, { method: 'DELETE' });
+
+        if (res.status === 200) {
+          this.tasks = this.tasks.filter((task) => task.id !== id);
+        } else {
+          alert('error deleting task');
+        }
       }
     },
     toggleReminder(id) {
@@ -57,7 +72,12 @@ export default {
       });
     },
     async fetchTasks() {
-      const res = await fetch('http://localhost:3000/tasks');
+      const res = await fetch('api/tasks');
+      const data = await res.json();
+      return data;
+    },
+    async fetchTask(id) {
+      const res = await fetch(`api/tasks/${id}`);
       const data = await res.json();
       return data;
     },
