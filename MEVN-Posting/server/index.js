@@ -1,5 +1,7 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const mongoose = require('mongoose');
 
 const app = express();
 
@@ -7,7 +9,15 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const posts = require('./routes/api/posts');
+mongoose
+  .connect(process.env.URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log(`Connected to mongodb database`))
+  .catch((err) => console.log(err));
+
+const posts = require('./routes/api/Posts');
 app.use('/api/posts', posts);
 
 const port = process.env.PORT || 3000;
