@@ -1,7 +1,15 @@
 <template>
   <div class="container mt-4">
     <div class="d-flex row-3 justify-content-center">
-      <img alt="Vue logo" src="./assets/logo.png" />
+      <video
+        autoplay
+        loop
+        muted
+        alt="Vue logo"
+        src="./assets/Logo.mp4"
+        width="320"
+        height="240"
+      />
     </div>
     <Post />
   </div>

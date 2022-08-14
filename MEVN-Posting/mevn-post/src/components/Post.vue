@@ -17,8 +17,16 @@
         <p class="m-0">
           {{ post.author }}
         </p>
-        <button class="btn btn-secondary btn-sm rounded-pill">Delete</button>
+        <button
+          class="btn btn-secondary btn-sm rounded-pill"
+          @click="HandleDelete(post._id)"
+        >
+          Delete
+        </button>
       </div>
+    </div>
+    <div class="row-4">
+      <button class="btn btn-dark rounded-pill btn-sm w-100">Add New Post</button>
     </div>
   </div>
 </template>
@@ -41,6 +49,12 @@ export default {
     } catch (err) {
       console.log(err);
     }
+  },
+  methods: {
+    async HandleDelete(id) {
+      await Router.DeletePost(id);
+      window.location.reload();
+    },
   },
 };
 </script>
