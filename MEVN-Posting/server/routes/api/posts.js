@@ -17,6 +17,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     if (!req.body.name) throw new Error('Need to provide a name!');
+    if (!req.body.author) throw new Error('Need to provide a email!');
     const NewPost = new Post({
       name: req.body.name,
       author: req.body.author,
@@ -36,7 +37,7 @@ router.delete('/:id', async (req, res) => {
     await Post.deleteOne({ _id: id });
     res.status(200).send(`Post: ${id} Deleted`);
   } catch (err) {
-    res.status(400).send(err);
+    res.status(404).send(err);
   }
 });
 
