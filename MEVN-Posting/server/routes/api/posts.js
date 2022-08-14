@@ -16,11 +16,16 @@ router.get('/', async (req, res) => {
 // Add Post
 router.post('/', async (req, res) => {
   try {
-    const NewPost = new Post(req.body);
+    if (!req.body.name) throw new Error('Need to provide a name!');
+    const NewPost = new Post({
+      name: req.body.name,
+      author: req.body.author,
+      createdAt: new Date(),
+    });
     await NewPost.save();
     res.status(201).json(`New Post added with id: ${NewPost?.id}`);
   } catch (err) {
-    res.status(400).send(err);
+    res.status(400).send(err.message);
   }
 });
 
