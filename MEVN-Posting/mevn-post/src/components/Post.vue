@@ -26,13 +26,17 @@
       </div>
     </div>
     <div class="row-4">
-      <button class="btn btn-dark rounded-pill btn-sm w-100">Add New Post</button>
+      <button class="btn btn-dark rounded-pill btn-sm w-100" @click="AddPost = !AddPost">
+        Toggle Post View
+      </button>
+      <AddPost v-show="AddPost" />
     </div>
   </div>
 </template>
 
 <script>
 import Router from '../Router.js';
+import AddPost from './AddPost.vue';
 
 export default {
   name: 'Post-C',
@@ -41,7 +45,11 @@ export default {
       posts: [],
       error: '',
       text: '',
+      AddPost: false,
     };
+  },
+  components: {
+    AddPost,
   },
   async created() {
     try {

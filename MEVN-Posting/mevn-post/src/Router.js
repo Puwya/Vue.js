@@ -15,9 +15,7 @@ class Router {
 
   // Create Post
   static CreatePost(data) {
-    return axios.post(url, {
-      data,
-    });
+    return axios.post(url, data);
   }
 
   // Delete Post
