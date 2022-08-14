@@ -1,6 +1,10 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <Post />
+  <div class="container mt-4">
+    <div class="d-flex row-3 justify-content-center">
+      <img alt="Vue logo" src="./assets/logo.png" />
+    </div>
+    <Post />
+  </div>
 </template>
 
 <script>
@@ -13,14 +17,3 @@ export default {
   },
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

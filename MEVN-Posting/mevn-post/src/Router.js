@@ -7,8 +7,7 @@ class Router {
   static async GetPost() {
     try {
       const res = await axios.get(url);
-      const data = res.data;
-      return data;
+      return res.data;
     } catch (err) {
       console.log(err);
     }
