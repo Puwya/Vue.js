@@ -1,26 +1,39 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>HELLO FROM IMPROVED LOS</h1>
+  <div v-if="modalActive">
+    <smart-modal theme="event" @closeModal="toggleModal">
+      <template v-slot:content>
+        <p>This is the test modal</p>
+        <p>hello from the test modal</p>
+      </template>
+      <template v-slot:links>
+        <a href="#">Signup</a>
+        <a href="#">More Details</a>
+      </template>
+    </smart-modal>
+  </div>
+  <button @click="toggleModal">Open Modal</button>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import smartModal from '@/components/smart-modal.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    smartModal,
+  },
+  data() {
+    return {
+      modalActive: false,
+    };
+  },
+  methods: {
+    toggleModal() {
+      this.modalActive = !this.modalActive;
+    },
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style scoped></style>
