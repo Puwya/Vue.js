@@ -1,6 +1,6 @@
 <template>
   <h1>Ninja Reaction Timer</h1>
-  <button @click="start" :disabled="isPlaying">Play</button>
+  <button @click="start" class="play-btn" :disabled="isPlaying">Play</button>
   <smart-block v-if="isPlaying" :delay="delay" @finished="reset" />
   <smart-results v-if="showResults" :reactionTime="score" />
 </template>
@@ -45,5 +45,20 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.play-btn {
+  padding: 8px 18px;
+  background-color: #2c3e50;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.play-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 </style>
