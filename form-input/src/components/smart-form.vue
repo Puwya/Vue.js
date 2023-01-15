@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form @submit.prevent="handleSubmit">
     <label>Email: </label>
     <input type="email" v-model="email" required />
 
@@ -23,6 +23,10 @@
     <div class="terms">
       <input type="checkbox" v-model="terms" required />
       <label>Accept terms and conditions</label>
+    </div>
+
+    <div class="submit">
+      <button>Create an Account</button>
     </div>
   </form>
   <p>Email: {{ email }}</p>
@@ -64,6 +68,9 @@ export default {
       this.skills = this.skills.filter((s) => {
         return s !== skillName;
       });
+    },
+    handleSubmit() {
+      console.log('form submitted');
     },
   },
 };
@@ -130,5 +137,22 @@ ul {
 .skill:hover {
   background-color: #555;
   color: white;
+}
+
+.submit {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit button {
+  margin: 2px;
+  padding: 8px 15px;
+  background-color: rgb(25, 80, 207);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
 }
 </style>
